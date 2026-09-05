@@ -638,16 +638,4 @@ _Add your preferred open-source license here._
 **Built With**
 
 Ollama · Qwen 2.5 Coder · Node.js · AJV · Piper · HyperFrames · GSAP · FFmpeg
-
-this is the prompt :-- Tables is an AI-powered customer intelligence platform for modern sales teams. It helps sales teams discover and connect with the right prospects faster, gives access to 297M+ professional profiles, and connects customer data across LinkedIn and HubSpot. Instead of managing fragmented workflows across multiple tools, teams can use one intelligent workspace to find prospects, organize customer information, and move from discovery to outreach faster. Create a premium, modern SaaS product launch video with a strong opening hook, a concise problem/friction moment, a dramatic 297M+ proof beat, a LinkedIn + HubSpot ecosystem visualization, and a clear final CTA. Keep the visual style cinematic, minimal, polished, and high-end, with smooth motion graphics, strong typography, subtle depth, premium transitions, energetic but professional background music, and tasteful UI-style sound effects. Voiceover should be natural, concise, and complementary to the visuals rather than reading the on-screen text.  
-
-
-what it generate :-- 
-
-
-
-https://github.com/user-attachments/assets/9e739dd8-210c-4973-a3e9-bd6f1ff875ec
-
-
-
 </div>
