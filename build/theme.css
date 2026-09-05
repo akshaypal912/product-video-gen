@@ -1,0 +1,19 @@
+/**
+ * Premium SaaS launch tokens.
+ * Load via <link rel="stylesheet" href="theme.css"> (hoisted in HyperFrames).
+ */
+:root {
+  --color-background: #0b1220;
+  --color-background-alt: #121a2b;
+  --color-surface: #172033;
+  --color-accent: #7aa2ff;
+  --color-accent-soft: rgba(122, 162, 255, 0.16);
+  --color-text-primary: #eef2f8;
+  --color-text-muted: #93a0b5;
+  --color-line: rgba(238, 242, 248, 0.08);
+  --font-display: "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace;
+  --font-family: "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+}

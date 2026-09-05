@@ -1,0 +1,89 @@
+{
+  "scenes": [
+    {
+      "type": "logo-intro",
+      "duration": 54,
+      "role": "hook",
+      "props": {
+        "productName": "Tables"
+      },
+      "voiceover": {
+        "enabled": false,
+        "script": ""
+      }
+    },
+    {
+      "type": "text-reveal",
+      "duration": 66,
+      "role": "friction",
+      "props": {
+        "lines": [
+          "Sales teams struggle to manage fragmented workflows across multiple tools."
+        ]
+      },
+      "voiceover": {
+        "enabled": false,
+        "script": ""
+      }
+    },
+    {
+      "type": "stat-callout",
+      "duration": 120,
+      "role": "benefit",
+      "props": {
+        "value": "297",
+        "suffix": "M+",
+        "label": "professional profiles"
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "One intelligent workspace to find prospects organize customer."
+      }
+    },
+    {
+      "type": "icon-grid",
+      "duration": 108,
+      "role": "ecosystem",
+      "props": {
+        "caption": "Connect customer data across LinkedIn and HubSpot",
+        "iconColors": [
+          "#007bff",
+          "#28a745"
+        ],
+        "labels": [
+          "LinkedIn",
+          "HubSpot"
+        ]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Customer data across linkedin and hubspot instead of."
+      }
+    },
+    {
+      "type": "cta-outro",
+      "duration": 54,
+      "role": "cta",
+      "props": {
+        "headline": "Get started with Tables",
+        "sub": "Discover and connect with the right prospects faster."
+      },
+      "voiceover": {
+        "enabled": false,
+        "script": ""
+      }
+    }
+  ],
+  "audio": {
+    "music": {
+      "enabled": true,
+      "mood": "premium cinematic saas"
+    },
+    "voiceover": {
+      "enabled": true,
+      "script": "short spoken film",
+      "tone": "confident, warm, premium",
+      "pace": "natural"
+    }
+  }
+}

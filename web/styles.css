@@ -1,0 +1,379 @@
+:root {
+  --bg: #0b1220;
+  --bg-panel: #121a2b;
+  --text: #eef2f8;
+  --muted: #93a0b5;
+  --line: rgba(238, 242, 248, 0.1);
+  --accent: #7aa2ff;
+  --accent-hover: #9bb6ff;
+  --idle: #93a0b5;
+  --queued: #d4a017;
+  --running: #7aa2ff;
+  --completed: #3dd6a5;
+  --failed: #f07178;
+  --error-bg: rgba(240, 113, 120, 0.12);
+  --error-line: rgba(240, 113, 120, 0.35);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --radius: 18px;
+  --font: "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(1000px 480px at 12% -20%, rgba(122, 162, 255, 0.18), transparent 55%),
+    var(--bg);
+  line-height: 1.5;
+}
+
+.page {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 72px;
+}
+
+.hero {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+textarea {
+  width: 100%;
+  min-height: 280px;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #0e1626;
+  color: var(--text);
+  font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Menlo, Consolas,
+    monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+#product-description {
+  min-height: 160px;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, white);
+  border-color: var(--accent);
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hint code {
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.vo-status {
+  margin: 0;
+}
+
+button,
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#generate-btn {
+  background: var(--accent);
+  color: #fff;
+}
+
+#generate-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+#generate-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.status-block {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-label {
+  font-weight: 700;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.pill-idle {
+  background: rgba(147, 160, 181, 0.16);
+  color: var(--idle);
+}
+
+.pill-generating {
+  background: rgba(122, 162, 255, 0.16);
+  color: #c5d4ff;
+}
+
+.pill-queued {
+  background: rgba(212, 160, 23, 0.16);
+  color: #f0c14b;
+}
+
+.pill-running {
+  background: rgba(122, 162, 255, 0.2);
+  color: var(--accent);
+}
+
+.pill-completed {
+  background: rgba(61, 214, 165, 0.16);
+  color: var(--completed);
+}
+
+.pill-failed {
+  background: rgba(240, 113, 120, 0.16);
+  color: var(--failed);
+}
+
+.status-message {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.job-id {
+  margin: 6px 0 0;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.meta-section {
+  margin-top: 24px;
+}
+
+.meta-section h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.meta-grid div {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #0e1626;
+}
+
+.meta-grid dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.meta-grid dd {
+  margin: 4px 0 0;
+  font-weight: 700;
+}
+
+.download-row {
+  margin-top: 20px;
+}
+
+.download-btn {
+  background: var(--completed);
+  color: #fff;
+}
+
+.download-btn:hover {
+  filter: brightness(0.95);
+}
+
+.secondary-btn {
+  background: rgba(238, 242, 248, 0.08);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background: rgba(238, 242, 248, 0.14);
+}
+
+.secondary-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.dev-panel {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.dev-panel summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.dev-panel .hint {
+  margin-top: 10px;
+}
+
+.dev-panel textarea {
+  margin-top: 8px;
+  min-height: 220px;
+}
+
+.error-box {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--error-line);
+  border-radius: 12px;
+  background: var(--error-bg);
+}
+
+.error-title {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: var(--failed);
+}
+
+.error-message,
+.error-details {
+  margin: 0;
+  color: #f3c0c3;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.error-details {
+  margin-top: 8px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: min(100%, calc(100% - 20px));
+    padding: 20px 0 48px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  textarea {
+    min-height: 220px;
+  }
+
+  #product-description {
+    min-height: 140px;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #generate-btn,
+  .download-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+}

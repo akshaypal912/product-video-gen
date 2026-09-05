@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-composition-variables="[
+    {
+      &quot;id&quot;: &quot;caption&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Caption&quot;,
+      &quot;default&quot;: &quot;One workflow. The tools you already use.&quot;,
+      &quot;placeholder&quot;: &quot;One workflow. The tools you already use.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;iconColors&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Icon colors (JSON array)&quot;,
+      &quot;default&quot;: &quot;[\&quot;#4FA6F7\&quot;, \&quot;#7AA2FF\&quot;, \&quot;#EF6C4D\&quot;]&quot;,
+      &quot;placeholder&quot;: &quot;[\&quot;#4FA6F7\&quot;, \&quot;#7AA2FF\&quot;]&quot;
+    },
+    {
+      &quot;id&quot;: &quot;labels&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Node labels (JSON array)&quot;,
+      &quot;default&quot;: &quot;[\&quot;LinkedIn\&quot;, \&quot;Tables\&quot;, \&quot;HubSpot\&quot;]&quot;,
+      &quot;placeholder&quot;: &quot;[\&quot;LinkedIn\&quot;, \&quot;Tables\&quot;, \&quot;HubSpot\&quot;]&quot;
+    },
+    {
+      &quot;id&quot;: &quot;role&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Narrative role&quot;,
+      &quot;default&quot;: &quot;ecosystem&quot;
+    }
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>icon-grid</title>
+  </head>
+  <body>
+    <template id="icon-grid-template">
+      <link rel="stylesheet" href="theme.css">
+
+      <div data-hf-id="hf-bq2a" id="root" data-composition-id="icon-grid" data-width="1920" data-height="1080" data-duration="3.2">
+        <div data-hf-id="hf-orb1" class="orbit" aria-hidden="true"></div>
+        <div data-hf-id="hf-tan6" class="stage">
+          <p data-hf-id="hf-y858" id="icon-grid-kicker" class="kicker">Together</p>
+          <p data-hf-id="hf-rvkm" id="icon-grid-caption" class="caption" data-var-text="caption">
+            One workflow. The tools you already use.
+          </p>
+          <div data-hf-id="hf-o7xt" id="icon-grid-network" class="network"></div>
+        </div>
+      </div>
+
+      <style>
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: var(--color-background);
+          font-family: var(--font-display);
+          color: var(--color-text-primary);
+        }
+
+        .orbit {
+          position: absolute;
+          width: 920px;
+          height: 920px;
+          left: 500px;
+          top: 80px;
+          border-radius: 50%;
+          border: 1px solid var(--color-line);
+          opacity: 0.8;
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 36px;
+          padding: 0 120px;
+          box-sizing: border-box;
+        }
+
+        .kicker {
+          margin: 0;
+          font-family: var(--font-mono);
+          font-size: 16px;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
+          color: var(--color-accent);
+        }
+
+        .caption {
+          margin: 0;
+          max-width: 1400px;
+          font-size: 44px;
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          color: var(--color-text-primary);
+          text-align: center;
+        }
+
+        .network {
+          position: relative;
+          width: 1480px;
+          height: 280px;
+        }
+
+        .connector {
+          position: absolute;
+          top: 70px;
+          height: 2px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            var(--color-accent),
+            transparent
+          );
+          opacity: 0.7;
+          transform-origin: left center;
+        }
+
+        .node {
+          position: absolute;
+          top: 0;
+          width: 220px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
+        }
+
+        .node-core {
+          width: 140px;
+          height: 140px;
+          border-radius: 28px;
+          border: 1px solid var(--color-line);
+          background: var(--color-surface);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .node-core.is-hub {
+          border-color: var(--color-accent);
+          box-shadow: 0 0 0 10px var(--color-accent-soft);
+        }
+
+        .node-glyph {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+        }
+
+        .node-label {
+          margin: 0;
+          font-family: var(--font-mono);
+          font-size: 20px;
+          letter-spacing: 0.04em;
+          color: var(--color-text-primary);
+        }
+      </style>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          const MAX_NODES = 6;
+          const FALLBACK_COLORS = ["#4FA6F7", "#7AA2FF", "#EF6C4D"];
+          const HEX_COLOR =
+            /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
+
+          function readVars() {
+            const defaults = {
+              caption: "One workflow. The tools you already use.",
+              iconColors: '["#4FA6F7", "#7AA2FF", "#EF6C4D"]',
+              labels: '["LinkedIn", "Tables", "HubSpot"]',
+            };
+            try {
+              if (
+                window.__hyperframes &&
+                typeof window.__hyperframes.getVariables === "function"
+              ) {
+                const vars = window.__hyperframes.getVariables();
+                return {
+                  caption:
+                    vars && vars.caption != null && String(vars.caption) !== ""
+                      ? String(vars.caption)
+                      : defaults.caption,
+                  iconColors:
+                    vars && vars.iconColors != null
+                      ? vars.iconColors
+                      : defaults.iconColors,
+                  labels:
+                    vars && vars.labels != null ? vars.labels : defaults.labels,
+                };
+              }
+            } catch (_err) {}
+            return defaults;
+          }
+
+          function parseList(raw) {
+            if (Array.isArray(raw)) return raw.map((item) => String(item));
+            if (typeof raw === "string") {
+              try {
+                const parsed = JSON.parse(raw.trim());
+                if (Array.isArray(parsed)) {
+                  return parsed.map((item) => String(item));
+                }
+              } catch (_err) {}
+            }
+            return [];
+          }
+
+          const vars = readVars();
+          const colors = parseList(vars.iconColors)
+            .filter((c) => HEX_COLOR.test(c))
+            .slice(0, MAX_NODES);
+          const basePalette =
+            colors.length >= 2 ? colors : FALLBACK_COLORS.slice();
+          let labels = parseList(vars.labels)
+            .map((s) => s.trim())
+            .filter(Boolean)
+            .slice(0, MAX_NODES);
+          const count =
+            labels.length >= 2
+              ? labels.length
+              : Math.min(MAX_NODES, Math.max(2, basePalette.length));
+          const palette = [];
+          for (let i = 0; i < count; i++) {
+            palette.push(basePalette[i % basePalette.length]);
+          }
+          while (labels.length < count) {
+            labels.push("Node " + (labels.length + 1));
+          }
+
+          const network = document.getElementById("icon-grid-network");
+          const captionEl = document.getElementById("icon-grid-caption");
+          if (captionEl && !captionEl.textContent) {
+            captionEl.textContent = vars.caption;
+          }
+
+          const span = 1480 - 220;
+          const nodeEls = [];
+          const hubs = count === 3 ? 1 : Math.floor((count - 1) / 2);
+
+          for (let i = 0; i < count; i++) {
+            const left =
+              count === 1 ? 630 : Math.round((span / (count - 1)) * i);
+            const node = document.createElement("div");
+            node.className = "node";
+            node.id = "icon-grid-node-" + i;
+            node.style.left = left + "px";
+
+            const core = document.createElement("div");
+            core.className = "node-core" + (i === hubs ? " is-hub" : "");
+            const glyph = document.createElement("div");
+            glyph.className = "node-glyph";
+            glyph.style.background = palette[i];
+            core.appendChild(glyph);
+
+            const label = document.createElement("p");
+            label.className = "node-label";
+            label.textContent = labels[i];
+
+            node.appendChild(core);
+            node.appendChild(label);
+            network.appendChild(node);
+            nodeEls.push(node);
+          }
+
+          for (let i = 0; i < count - 1; i++) {
+            const a = parseInt(nodeEls[i].style.left, 10);
+            const b = parseInt(nodeEls[i + 1].style.left, 10);
+            const line = document.createElement("div");
+            line.className = "connector";
+            line.id = "icon-grid-line-" + i;
+            line.style.left = a + 220 + "px";
+            line.style.width = Math.max(b - a - 220, 8) + "px";
+            network.appendChild(line);
+          }
+
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo(
+            ".orbit",
+            { opacity: 0, scale: 0.92 },
+            { opacity: 0.8, scale: 1, duration: 0.7, ease: "sine.out" },
+            0,
+          );
+          tl.fromTo(
+            "#icon-grid-kicker",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+            0.08,
+          );
+          tl.fromTo(
+            "#icon-grid-caption",
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+            0.16,
+          );
+
+          nodeEls.forEach(function (el, index) {
+            tl.fromTo(
+              el,
+              { opacity: 0, y: 18 },
+              { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
+              0.38 + index * 0.12,
+            );
+          });
+
+          tl.fromTo(
+            ".connector",
+            { opacity: 0, scaleX: 0.2 },
+            {
+              opacity: 0.75,
+              scaleX: 1,
+              duration: 0.45,
+              stagger: 0.1,
+              ease: "power2.out",
+            },
+            0.7,
+          );
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["icon-grid"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

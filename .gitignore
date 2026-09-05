@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.local
+build/artifacts/
+build/*.mp4
+build/tmp-*
+build/audio/
+models/piper/*.onnx
+models/piper/*.onnx.json

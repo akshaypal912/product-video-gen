@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Video Generator</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="eyebrow">Development preview</p>
+        <h1>Product Video Generator</h1>
+        <p class="lede">
+          Describe your product. We write a short launch narrative, compose
+          cinematic scenes, and render a premium MP4.
+        </p>
+      </header>
+
+      <main class="panel">
+        <form id="generate-form" novalidate>
+          <label class="field-label" for="product-description"
+            >Describe your product</label
+          >
+          <textarea
+            id="product-description"
+            name="productDescription"
+            rows="8"
+            maxlength="4000"
+            spellcheck="true"
+            autocomplete="off"
+            aria-describedby="description-hint"
+          ></textarea>
+          <p id="description-hint" class="hint">
+            Facts only — metrics and tools must be real. The storyboard will
+            turn them into a launch film, not a slide list.
+          </p>
+
+          <div class="actions">
+            <button type="submit" id="generate-btn">Generate launch video</button>
+            <p id="voiceover-status" class="hint vo-status">Voiceover: checking…</p>
+          </div>
+        </form>
+
+        <section class="status-block" aria-live="polite">
+          <div class="status-row">
+            <span class="status-label">Status</span>
+            <span id="status-pill" class="pill pill-idle">idle</span>
+          </div>
+          <p id="status-message" class="status-message">
+            Ready. Describe a product to generate a launch video.
+          </p>
+          <p id="job-id" class="job-id" hidden></p>
+        </section>
+
+        <section id="meta-section" class="meta-section" hidden>
+          <h2>Video details</h2>
+          <dl id="meta-list" class="meta-grid"></dl>
+        </section>
+
+        <div class="download-row">
+          <a
+            id="download-btn"
+            class="download-btn"
+            hidden
+            download
+            rel="noopener"
+            >Your video is ready</a
+          >
+        </div>
+
+        <div id="error-box" class="error-box" role="alert" hidden>
+          <p id="error-title" class="error-title">Something went wrong</p>
+          <p id="error-message" class="error-message"></p>
+          <pre id="error-details" class="error-details" hidden></pre>
+        </div>
+
+        <details class="dev-panel">
+          <summary>Developer: submit storyboard JSON</summary>
+          <p class="hint">
+            Skips Mistral and posts directly to
+            <code>POST /api/videos</code>.
+          </p>
+          <form id="storyboard-form" novalidate>
+            <label class="field-label" for="storyboard">Storyboard JSON</label>
+            <textarea
+              id="storyboard"
+              name="storyboard"
+              rows="16"
+              spellcheck="false"
+              autocomplete="off"
+            ></textarea>
+            <div class="actions">
+              <button type="submit" id="storyboard-btn" class="secondary-btn">
+                Submit storyboard
+              </button>
+            </div>
+          </form>
+        </details>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

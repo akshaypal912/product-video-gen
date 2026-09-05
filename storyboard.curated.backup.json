@@ -1,0 +1,99 @@
+{
+  "audio": {
+    "music": {
+      "enabled": true,
+      "mood": "premium cinematic saas"
+    },
+    "voiceover": {
+      "enabled": true,
+      "script": "Your next customer is already out there. Stop hunting across disconnected tools. Tables puts more than two hundred ninety seven million professionals in one workflow. Discover. Connect. Convert.",
+      "tone": "confident, warm, premium",
+      "pace": "natural"
+    }
+  },
+  "scenes": [
+    {
+      "type": "logo-intro",
+      "duration": 36,
+      "role": "reveal",
+      "props": {
+        "productName": "Tables"
+      },
+      "voiceover": {
+        "enabled": false,
+        "script": ""
+      }
+    },
+    {
+      "type": "text-reveal",
+      "duration": 66,
+      "role": "hook",
+      "props": {
+        "lines": [
+          "Your next customer is already out there.",
+          "They just have not found you yet."
+        ]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Your next customer is already out there."
+      }
+    },
+    {
+      "type": "text-reveal",
+      "duration": 84,
+      "role": "friction",
+      "props": {
+        "lines": [
+          "Stop jumping between disconnected tools.",
+          "Scattered data slows every deal."
+        ]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Finding them still means jumping between tools that do not talk."
+      }
+    },
+    {
+      "type": "stat-callout",
+      "duration": 150,
+      "role": "proof",
+      "props": {
+        "value": "297",
+        "suffix": "M+",
+        "label": "Find the right people faster."
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Find the right people across more than two hundred ninety seven million professionals."
+      }
+    },
+    {
+      "type": "icon-grid",
+      "duration": 96,
+      "role": "ecosystem",
+      "props": {
+        "caption": "One workflow. The tools you already use.",
+        "iconColors": ["#4FA6F7", "#7AA2FF", "#EF6C4D"],
+        "labels": ["LinkedIn", "Tables", "HubSpot"]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Tables keeps LinkedIn and HubSpot in the same customer workflow."
+      }
+    },
+    {
+      "type": "cta-outro",
+      "duration": 48,
+      "role": "cta",
+      "props": {
+        "headline": "Discover. Connect. Convert.",
+        "sub": "Tables"
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Discover. Connect. Convert."
+      }
+    }
+  ]
+}

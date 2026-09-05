@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-composition-variables="[
+    {
+      &quot;id&quot;: &quot;productName&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Product Name&quot;,
+      &quot;default&quot;: &quot;Product Name&quot;
+    },
+    {
+      &quot;id&quot;: &quot;role&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Narrative role&quot;,
+      &quot;default&quot;: &quot;reveal&quot;
+    }
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logo-intro</title>
+  </head>
+  <body>
+    <template id="logo-intro-template">
+      <link rel="stylesheet" href="theme.css">
+
+      <div data-hf-id="hf-bf6f" id="root" data-composition-id="logo-intro" data-width="1920" data-height="1080" data-duration="1.2">
+        <div data-hf-id="hf-vkbx" class="bg-grid" aria-hidden="true"></div>
+        <div data-hf-id="hf-yzty" id="logo-intro-glow" class="glow" aria-hidden="true"></div>
+        <div data-hf-id="hf-tan6" class="stage">
+          <p data-hf-id="hf-wt72" id="logo-intro-kicker" class="kicker">Introducing</p>
+          <div data-hf-id="hf-tlmu" id="logo-intro-mark" class="logo-mark" aria-hidden="true">
+            <span data-hf-id="hf-mk2a" class="logo-mark-inner"></span>
+          </div>
+          <h1 data-hf-id="hf-tvnu" id="logo-intro-name" class="product-name" data-var-text="productName">
+            Product Name
+          </h1>
+        </div>
+      </div>
+
+      <style>
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: var(--color-background);
+          font-family: var(--font-display);
+          color: var(--color-text-primary);
+        }
+
+        .bg-grid {
+          position: absolute;
+          inset: -80px;
+          background-image:
+            linear-gradient(var(--color-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+          background-size: 80px 80px;
+          opacity: 0.5;
+        }
+
+        .glow {
+          position: absolute;
+          width: 720px;
+          height: 720px;
+          left: 600px;
+          top: 180px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            var(--color-accent-soft) 0%,
+            transparent 68%
+          );
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 28px;
+          text-align: center;
+          padding: 0 160px;
+        }
+
+        .kicker {
+          margin: 0;
+          font-family: var(--font-mono);
+          font-size: 16px;
+          font-weight: 400;
+          letter-spacing: 0.32em;
+          text-transform: uppercase;
+          color: var(--color-text-muted);
+        }
+
+        .logo-mark {
+          width: 84px;
+          height: 84px;
+          border: 1px solid var(--color-accent);
+          border-radius: 22px;
+          background: var(--color-accent-soft);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .logo-mark-inner {
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
+          background: var(--color-accent);
+        }
+
+        .product-name {
+          margin: 0;
+          font-size: 92px;
+          font-weight: 700;
+          line-height: 1.05;
+          letter-spacing: -0.045em;
+        }
+      </style>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          const KICKERS = {
+            reveal: "Introducing",
+            hook: "Introducing",
+            cta: "Launch",
+            close: "Launch",
+          };
+
+          function readRole() {
+            try {
+              if (
+                window.__hyperframes &&
+                typeof window.__hyperframes.getVariables === "function"
+              ) {
+                const vars = window.__hyperframes.getVariables();
+                if (vars && vars.role) return String(vars.role).trim().toLowerCase();
+              }
+            } catch (_err) {}
+            return "reveal";
+          }
+
+          const role = readRole();
+          const kicker = document.getElementById("logo-intro-kicker");
+          if (kicker) kicker.textContent = KICKERS[role] || "Introducing";
+
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo(
+            "#logo-intro-glow",
+            { opacity: 0, scale: 0.86 },
+            { opacity: 1, scale: 1, duration: 0.9, ease: "sine.out" },
+            0,
+          );
+
+          tl.fromTo(
+            "#logo-intro-kicker",
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            0.1,
+          );
+
+          tl.fromTo(
+            "#logo-intro-mark",
+            { opacity: 0, scale: 0.88 },
+            { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
+            0.2,
+          );
+
+          tl.fromTo(
+            "#logo-intro-name",
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+            0.34,
+          );
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["logo-intro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

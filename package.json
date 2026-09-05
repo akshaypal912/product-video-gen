@@ -1,0 +1,25 @@
+{
+  "name": "product-video-gen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.22 preview",
+    "check": "npx --yes hyperframes@0.8.22 check",
+    "render": "npx --yes hyperframes@0.8.22 render",
+    "publish": "npx --yes hyperframes@0.8.22 publish",
+    "validate:storyboard": "node scripts/validate-storyboard.mjs",
+    "populate": "node scripts/populate-composition.mjs",
+    "apply:storyboard": "node scripts/apply-storyboard.mjs",
+    "render:video": "node scripts/render-video.mjs",
+    "generate:audio": "node scripts/generate-audio-assets.mjs",
+    "generate:voiceover": "node scripts/generate-voiceover.mjs",
+    "server": "node server/index.mjs",
+    "test": "node --test tests/llm-provider.test.mjs tests/ollama-storyboard.test.mjs tests/ollama-director-rules.test.mjs tests/cta-voiceover-repair.test.mjs tests/voiceover-fit.test.mjs tests/ollama-voiceover-fill.test.mjs tests/ollama-storyboard-normalize.test.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0"
+  },
+  "dependencies": {
+    "@mistralai/mistralai": "^2.6.4"
+  }
+}

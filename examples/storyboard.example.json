@@ -1,0 +1,52 @@
+{
+  "scenes": [
+    {
+      "type": "logo-intro",
+      "duration": 45,
+      "props": {
+        "productName": "Tables"
+      }
+    },
+    {
+      "type": "text-reveal",
+      "duration": 90,
+      "props": {
+        "lines": [
+          "Build faster.",
+          "Reach more customers.",
+          "Grow with confidence."
+        ]
+      }
+    },
+    {
+      "type": "stat-callout",
+      "duration": 60,
+      "props": {
+        "value": "297",
+        "suffix": "M+",
+        "label": "profiles"
+      }
+    },
+    {
+      "type": "icon-grid",
+      "duration": 90,
+      "props": {
+        "caption": "Every tool you use.",
+        "iconColors": [
+          "#4FA6F7",
+          "#EF6C4D",
+          "#6B7CFF",
+          "#2DBE8C"
+        ]
+      }
+    },
+    {
+      "type": "cta-outro",
+      "duration": 60,
+      "props": {
+        "headline": "Try it today",
+        "sub": "tables.com"
+      }
+    }
+  ]
+}

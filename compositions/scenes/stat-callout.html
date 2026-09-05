@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" data-composition-variables="[
+    {
+      &quot;id&quot;: &quot;value&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Statistic value&quot;,
+      &quot;default&quot;: &quot;297&quot;,
+      &quot;placeholder&quot;: &quot;297&quot;
+    },
+    {
+      &quot;id&quot;: &quot;suffix&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Suffix&quot;,
+      &quot;default&quot;: &quot;M+&quot;,
+      &quot;placeholder&quot;: &quot;M+&quot;
+    },
+    {
+      &quot;id&quot;: &quot;label&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Label&quot;,
+      &quot;default&quot;: &quot;Find the right people faster.&quot;,
+      &quot;placeholder&quot;: &quot;Find the right people faster.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;role&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;label&quot;: &quot;Narrative role&quot;,
+      &quot;default&quot;: &quot;proof&quot;
+    }
+  ]">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stat-callout</title>
+  </head>
+  <body>
+    <template id="stat-callout-template">
+      <link rel="stylesheet" href="theme.css">
+
+      <div data-hf-id="hf-ukqo" id="root" data-composition-id="stat-callout" data-width="1920" data-height="1080" data-duration="5">
+        <div data-hf-id="hf-nxyt" id="stat-callout-field" class="dot-field" aria-hidden="true"></div>
+        <div data-hf-id="hf-7hro" id="stat-callout-glow" class="hero-glow" aria-hidden="true"></div>
+        <div data-hf-id="hf-tan6" class="stage">
+          <p data-hf-id="hf-s623" id="stat-callout-kicker" class="kicker">Proof</p>
+          <div data-hf-id="hf-9r35" id="stat-callout-row" class="stat-row">
+            <span data-hf-id="hf-9vuw" id="stat-callout-value" class="stat-value">0</span>
+            <span data-hf-id="hf-qkk6" id="stat-callout-suffix" class="stat-suffix" data-var-text="suffix">M+</span>
+          </div>
+          <p data-hf-id="hf-ci0q" id="stat-callout-label" class="stat-label" data-var-text="label">
+            Find the right people faster.
+          </p>
+        </div>
+      </div>
+
+      <style>
+        #root {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+          background: var(--color-background);
+          font-family: var(--font-display);
+          color: var(--color-text-primary);
+        }
+
+        .dot-field {
+          position: absolute;
+          inset: 0;
+        }
+
+        .dot {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: var(--color-accent);
+          opacity: 0.28;
+        }
+
+        .hero-glow {
+          position: absolute;
+          width: 1100px;
+          height: 1100px;
+          left: -80px;
+          top: -40px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(122, 162, 255, 0.2) 0%,
+            transparent 64%
+          );
+        }
+
+        .stage {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 12px;
+          padding: 0 160px 40px 180px;
+          box-sizing: border-box;
+        }
+
+        .kicker {
+          margin: 0 0 8px;
+          font-family: var(--font-mono);
+          font-size: 16px;
+          letter-spacing: 0.32em;
+          text-transform: uppercase;
+          color: var(--color-accent);
+        }
+
+        .stat-row {
+          display: flex;
+          align-items: baseline;
+          justify-content: flex-start;
+          gap: 8px;
+        }
+
+        .stat-value {
+          font-size: 236px;
+          font-weight: 700;
+          line-height: 0.86;
+          letter-spacing: -0.06em;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .stat-suffix {
+          font-size: 96px;
+          font-weight: 700;
+          letter-spacing: -0.04em;
+          color: var(--color-accent);
+        }
+
+        .stat-label {
+          margin: 18px 0 0;
+          max-width: 1100px;
+          font-size: 36px;
+          font-weight: 400;
+          line-height: 1.25;
+          letter-spacing: -0.02em;
+          text-transform: none;
+          color: var(--color-text-muted);
+        }
+      </style>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          const FALLBACK = {
+            value: "297",
+            suffix: "M+",
+            label: "Find the right people faster.",
+          };
+
+          function unit(i) {
+            return ((i * 9301 + 49297) % 233280) / 233280;
+          }
+
+          function readVars() {
+            try {
+              if (
+                window.__hyperframes &&
+                typeof window.__hyperframes.getVariables === "function"
+              ) {
+                const vars = window.__hyperframes.getVariables();
+                return {
+                  value:
+                    vars && vars.value != null && String(vars.value) !== ""
+                      ? String(vars.value)
+                      : FALLBACK.value,
+                  suffix:
+                    vars && vars.suffix != null
+                      ? String(vars.suffix)
+                      : FALLBACK.suffix,
+                  label:
+                    vars && vars.label != null
+                      ? String(vars.label)
+                      : FALLBACK.label,
+                  role:
+                    vars && vars.role
+                      ? String(vars.role).trim().toLowerCase()
+                      : "proof",
+                };
+              }
+            } catch (_err) {}
+            return { ...FALLBACK, role: "proof" };
+          }
+
+          function parseValue(raw) {
+            const display = String(raw == null ? "" : raw).trim();
+            if (!display) {
+              return { numeric: false, display: FALLBACK.value, number: 0, decimals: 0 };
+            }
+            const cleaned = display.replace(/,/g, "");
+            const number = Number(cleaned);
+            if (!Number.isFinite(number)) {
+              return { numeric: false, display: display, number: 0, decimals: 0 };
+            }
+            const match = cleaned.match(/\.(\d+)$/);
+            return {
+              numeric: true,
+              display: display,
+              number: number,
+              decimals: match ? match[1].length : 0,
+            };
+          }
+
+          function formatCount(n, decimals) {
+            if (decimals > 0) return n.toFixed(decimals);
+            return String(Math.round(n));
+          }
+
+          const field = document.getElementById("stat-callout-field");
+          for (let i = 0; i < 36; i++) {
+            const dot = document.createElement("div");
+            dot.className = "dot";
+            dot.style.left = Math.round(80 + unit(i) * 1760) + "px";
+            dot.style.top = Math.round(70 + unit(i + 17) * 940) + "px";
+            field.appendChild(dot);
+          }
+
+          const vars = readVars();
+          const parsed = parseValue(vars.value);
+          const valueEl = document.getElementById("stat-callout-value");
+          const suffixEl = document.getElementById("stat-callout-suffix");
+          const labelEl = document.getElementById("stat-callout-label");
+          const kicker = document.getElementById("stat-callout-kicker");
+          if (kicker) kicker.textContent = "Proof";
+
+          if (suffixEl && !suffixEl.textContent) suffixEl.textContent = vars.suffix;
+          if (labelEl && !labelEl.textContent) labelEl.textContent = vars.label;
+
+          valueEl.textContent = parsed.numeric
+            ? formatCount(0, parsed.decimals)
+            : parsed.display;
+
+          const tl = gsap.timeline({ paused: true });
+
+          tl.fromTo(
+            "#stat-callout-glow",
+            { opacity: 0, scale: 0.9 },
+            { opacity: 1, scale: 1, duration: 0.8, ease: "sine.out" },
+            0,
+          );
+
+          tl.fromTo(
+            ".dot",
+            { opacity: 0 },
+            { opacity: 0.32, duration: 0.6, stagger: 0.012, ease: "sine.out" },
+            0.04,
+          );
+
+          tl.fromTo(
+            "#stat-callout-kicker",
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+            0.08,
+          );
+
+          tl.fromTo(
+            "#stat-callout-row",
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+            0.12,
+          );
+
+          if (parsed.numeric) {
+            const state = { value: 0 };
+            const exactDisplay = parsed.display.replace(/,/g, "");
+            tl.to(
+              state,
+              {
+                value: parsed.number,
+                duration: 1.35,
+                ease: "power2.out",
+                onUpdate: function () {
+                  valueEl.textContent =
+                    this.progress() === 1
+                      ? exactDisplay
+                      : formatCount(state.value, parsed.decimals);
+                },
+              },
+              0.16,
+            );
+          }
+
+          tl.fromTo(
+            "#stat-callout-suffix",
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+            parsed.numeric ? 1.28 : 0.4,
+          );
+
+          tl.fromTo(
+            "#stat-callout-label",
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
+            parsed.numeric ? 1.42 : 0.52,
+          );
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["stat-callout"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

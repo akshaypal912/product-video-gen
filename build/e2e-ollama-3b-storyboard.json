@@ -1,0 +1,89 @@
+{
+  "scenes": [
+    {
+      "type": "logo-intro",
+      "duration": 54,
+      "role": "hook",
+      "props": {
+        "productName": "Tables"
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Discover and connect with the right prospects faster."
+      }
+    },
+    {
+      "type": "text-reveal",
+      "duration": 66,
+      "role": "friction",
+      "props": {
+        "lines": [
+          "Sales teams struggle with fragmented workflows."
+        ]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Replace them with one intelligent workspace."
+      }
+    },
+    {
+      "type": "stat-callout",
+      "duration": 120,
+      "role": "benefit",
+      "props": {
+        "value": "297",
+        "suffix": "M+",
+        "label": "professional profiles"
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Tables provides access to 297M+ professional profiles."
+      }
+    },
+    {
+      "type": "icon-grid",
+      "duration": 72,
+      "role": "ecosystem",
+      "props": {
+        "caption": "Integrate with LinkedIn and HubSpot",
+        "iconColors": [
+          "#1DA1F2",
+          "#464646"
+        ],
+        "labels": [
+          "LinkedIn",
+          "HubSpot"
+        ]
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Tables connects customer data across LinkedIn and HubSpot."
+      }
+    },
+    {
+      "type": "cta-outro",
+      "duration": 54,
+      "role": "cta",
+      "props": {
+        "headline": "Start discovering and connecting with prospects faster.",
+        "sub": "Try Tables today."
+      },
+      "voiceover": {
+        "enabled": true,
+        "script": "Sales teams struggle with fragmented workflows."
+      }
+    }
+  ],
+  "audio": {
+    "music": {
+      "enabled": true,
+      "mood": "premium cinematic saas"
+    },
+    "voiceover": {
+      "enabled": true,
+      "script": "short spoken film",
+      "tone": "confident, warm, premium",
+      "pace": "natural"
+    }
+  }
+}

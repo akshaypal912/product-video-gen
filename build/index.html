@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Launch</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+
+      html,
+      body,
+      #root,
+      [data-composition-src] {
+        --color-background: #0b1220;
+        --color-background-alt: #121a2b;
+        --color-surface: #172033;
+        --color-accent: #7aa2ff;
+        --color-accent-soft: rgba(122, 162, 255, 0.16);
+        --color-text-primary: #eef2f8;
+        --color-text-muted: #93a0b5;
+        --color-line: rgba(238, 242, 248, 0.08);
+        --font-display: "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
+        --font-mono: "IBM Plex Mono", "JetBrains Mono", Consolas, monospace;
+        --font-family: "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
+        --font-weight-bold: 700;
+        --font-weight-regular: 400;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--color-background);
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      #scene-0 { opacity: 1; }
+      [id^="scene-"]:not(#scene-0) { opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="product-launch"
+      data-width="1920"
+      data-height="1080"
+      data-start="0"
+      data-duration="11.8"
+      data-fps="30"
+    >
+      <div
+        id="scene-0"
+        class="clip"
+        data-composition-id="logo-intro"
+        data-composition-src="compositions/scenes/logo-intro.html"
+        data-start="0"
+        data-duration="1.8"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"productName":"Tables","role":"hook"}'
+      ></div>
+
+      <div
+        id="scene-1"
+        class="clip"
+        data-composition-id="text-reveal"
+        data-composition-src="compositions/scenes/text-reveal.html"
+        data-start="1.4"
+        data-duration="2.2"
+        data-track-index="2"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"lines":"[\"Sales teams struggle to manage fragmented workflows across multiple tools.\"]","role":"friction"}'
+      ></div>
+
+      <div
+        id="scene-2"
+        class="clip"
+        data-composition-id="stat-callout"
+        data-composition-src="compositions/scenes/stat-callout.html"
+        data-start="3.2"
+        data-duration="4"
+        data-track-index="3"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"value":"297","suffix":"M+","label":"professional profiles","role":"benefit"}'
+      ></div>
+
+      <div
+        id="scene-3"
+        class="clip"
+        data-composition-id="icon-grid"
+        data-composition-src="compositions/scenes/icon-grid.html"
+        data-start="6.8"
+        data-duration="3.6"
+        data-track-index="4"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"caption":"Connect customer data across LinkedIn and HubSpot","iconColors":"[\"#007bff\",\"#28a745\"]","labels":"[\"LinkedIn\",\"HubSpot\"]","role":"ecosystem"}'
+      ></div>
+
+      <div
+        id="scene-4"
+        class="clip"
+        data-composition-id="cta-outro"
+        data-composition-src="compositions/scenes/cta-outro.html"
+        data-start="10"
+        data-duration="1.8"
+        data-track-index="5"
+        data-width="1920"
+        data-height="1080"
+        data-variable-values='{"headline":"Get started with Tables","sub":"Discover and connect with the right prospects faster.","role":"cta"}'
+      ></div>
+
+      <audio
+        id="audio-bed"
+        src="audio/music/bed.wav"
+        data-start="0"
+        data-duration="11.8"
+        data-volume="0.14"
+        data-audio-group="music"
+        data-track-index="20"
+        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:1},{&quot;t&quot;:3.253,&quot;v&quot;:1},{&quot;t&quot;:3.253,&quot;v&quot;:0.38},{&quot;t&quot;:7.194,&quot;v&quot;:0.38},{&quot;t&quot;:7.194,&quot;v&quot;:1},{&quot;t&quot;:6.853,&quot;v&quot;:0.38},{&quot;t&quot;:10.329,&quot;v&quot;:0.38},{&quot;t&quot;:10.329,&quot;v&quot;:1}]}]}"
+      ></audio>
+
+      <audio
+        id="sfx-0-0"
+        src="audio/sfx/whoosh.wav"
+        data-start="0.1333333333"
+        data-duration="0.55"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="21"
+      ></audio>
+
+      <audio
+        id="sfx-1-0"
+        src="audio/sfx/sweep.wav"
+        data-start="1.6"
+        data-duration="0.42"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="22"
+      ></audio>
+
+      <audio
+        id="sfx-2-0"
+        src="audio/sfx/impact.wav"
+        data-start="3.3333333333"
+        data-duration="0.32"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="23"
+      ></audio>
+
+      <audio
+        id="sfx-2-1"
+        src="audio/sfx/tick.wav"
+        data-start="3.8"
+        data-duration="0.06"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="24"
+      ></audio>
+
+      <audio
+        id="sfx-2-2"
+        src="audio/sfx/tick.wav"
+        data-start="4.2"
+        data-duration="0.06"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="25"
+      ></audio>
+
+      <audio
+        id="sfx-2-3"
+        src="audio/sfx/tick.wav"
+        data-start="4.6"
+        data-duration="0.06"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="26"
+      ></audio>
+
+      <audio
+        id="sfx-3-0"
+        src="audio/sfx/connect.wav"
+        data-start="7.4"
+        data-duration="0.09"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="27"
+      ></audio>
+
+      <audio
+        id="sfx-3-1"
+        src="audio/sfx/connect.wav"
+        data-start="7.7333333333"
+        data-duration="0.09"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="28"
+      ></audio>
+
+      <audio
+        id="sfx-4-0"
+        src="audio/sfx/rise.wav"
+        data-start="10.2666666667"
+        data-duration="0.7"
+        data-volume="0.28"
+        data-audio-group="sfx"
+        data-track-index="29"
+      ></audio>
+
+      <audio
+        id="audio-voice-0"
+        src="build/audio/voice/scene-2.wav"
+        data-start="3.3333333333"
+        data-duration="3.680363"
+        data-volume="0.94"
+        data-track-index="30"
+        data-audio-group="voiceover"
+      ></audio>
+
+      <audio
+        id="audio-voice-1"
+        src="build/audio/voice/scene-3.wav"
+        data-start="6.9333333333"
+        data-duration="3.215964"
+        data-volume="0.94"
+        data-track-index="31"
+        data-audio-group="voiceover"
+      ></audio>
+
+      <script>
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+        tl.to("#scene-0", { opacity: 0, scale: 1.035, duration: 0.4, ease: "sine.inOut" }, 1.4);
+        tl.fromTo("#scene-1", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.4, ease: "sine.inOut" }, 1.4);
+        tl.to("#scene-1", { opacity: 0, scale: 1.035, duration: 0.4, ease: "sine.inOut" }, 3.2);
+        tl.fromTo("#scene-2", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.4, ease: "sine.inOut" }, 3.2);
+        tl.to("#scene-2", { opacity: 0, scale: 1.035, duration: 0.4, ease: "sine.inOut" }, 6.8);
+        tl.fromTo("#scene-3", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.4, ease: "sine.inOut" }, 6.8);
+        tl.to("#scene-3", { opacity: 0, scale: 1.035, duration: 0.4, ease: "sine.inOut" }, 10);
+        tl.fromTo("#scene-4", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.4, ease: "sine.inOut" }, 10);
+        window.__timelines["product-launch"] = tl;
+      </script>
+    </div>
+  </body>
+</html>
